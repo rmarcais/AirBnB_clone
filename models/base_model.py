@@ -7,6 +7,7 @@ This module provides a class neamed BaseModel.
 import uuid
 from datetime import datetime
 import time
+from models import storage
 
 
 class BaseModel:
@@ -14,7 +15,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """This method is called when a new instance is created."""
-        if len(args) == 0 and len(kwargs):
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
@@ -24,8 +25,9 @@ class BaseModel:
                         setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.now().isoformat()
+            self.updated_at = datetime.now().isoformat()
+            storage.new(self)
 
     def __str__(self):
         """Tells the main program how to print the object."""
@@ -37,6 +39,7 @@ class BaseModel:
         datetime.
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values of
