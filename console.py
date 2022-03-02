@@ -84,12 +84,14 @@ class HBNBCommand(cmd.Cmd):
         on the class name
         """
         args = line.split()
-        if len(args) == 1:
-            if args[0] != "BaseModel":
+        if len(args) >= 1 and args[0] != "BaseModel":
                 print("** class doesn't exist **")
         else:
             dico = models.storage.all()
-            print(dico)
+            my_list = []
+            for k, v in dico.items():
+                my_list.append(str(dico[k]))
+            print(my_list)
 
     def do_update(self, line):
         """Updates an instance based on the class name and id by adding
