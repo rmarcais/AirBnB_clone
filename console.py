@@ -35,9 +35,9 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it and prints the id
         """
         args = line.split(' ')
-        if len(args)  == 0:
+        if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in  HBNBCommand.c:
+        elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
         else:
             var = eval(args[0])()
@@ -49,9 +49,9 @@ class HBNBCommand(cmd.Cmd):
         the class name and id
         """
         args = line.split()
-        if len(args)  == 0:
+        if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in  HBNBCommand.c:
+        elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -66,9 +66,9 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id
         """
         args = line.split()
-        if len(args)  == 0:
+        if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in  HBNBCommand.c:
+        elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -86,12 +86,14 @@ class HBNBCommand(cmd.Cmd):
         """
         args = line.split()
         if len(args) >= 1 and args[0] not in HBNBCommand.c:
-                print("** class doesn't exist **")
+            print("** class doesn't exist **")
         else:
             dico = models.storage.all()
             my_list = []
             for k, v in dico.items():
-                if len(args) != 0 and args[0] :
+                if len(args) == 0:
+                    my_list.append(str(dico[k]))
+                elif type(v) is eval(args[0]):
                     my_list.append(str(dico[k]))
             print(my_list)
 
@@ -102,10 +104,11 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in  HBNBCommand.c:
+        elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
