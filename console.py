@@ -15,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = '(hbnb) '
     file = None
+    c = ["BaseModel"]
 
     def emptyline(self):
         """Method to only print the message once"""
@@ -36,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(' ')
         if len(args)  == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in  HBNBCommand.c:
             print("** class doesn't exist **")
         else:
             var = eval(args[0])()
@@ -50,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args)  == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in  HBNBCommand.c:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -67,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args)  == 0:
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in  HBNBCommand.c:
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
@@ -80,23 +81,31 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """Prints all string representation of all instances based or not
-        on the class name
+        """Prints all string representation of all
+        instances based or not on the class name
         """
         args = line.split()
-        if len(args) >= 1 and args[0] != "BaseModel":
+        if len(args) >= 1 and args[0] not in HBNBCommand.c:
                 print("** class doesn't exist **")
         else:
             dico = models.storage.all()
             my_list = []
             for k, v in dico.items():
-                my_list.append(str(dico[k]))
+                if len(args) != 0 and args[0] :
+                    my_list.append(str(dico[k]))
             print(my_list)
 
     def do_update(self, line):
         """Updates an instance based on the class name and id by adding
         or updating attribute
         """
+        args = line.split()
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in  HBNBCommand.c:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print("** instance id missing **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
