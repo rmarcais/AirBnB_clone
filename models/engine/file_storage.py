@@ -4,6 +4,12 @@ This module defines a class named FileStorage.
 """
 
 from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 import json
 
 
@@ -38,7 +44,6 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as f:
                 dico2 = json.load(f)
                 for k, v in dico2.items():
-                    classname = globals()[v['__class__']]
-                    FileStorage.__objects[k] = classname(**v)
+                    FileStorage.__objects[k] = eval(v['__class__'])(**v)
         except Exception:
             return
