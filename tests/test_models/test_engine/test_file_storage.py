@@ -4,7 +4,7 @@ This module contains unit tests for the class FileStorage.
 """
 
 
-import unittest
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
@@ -12,10 +12,11 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+from datetime import datetime
+import unittest
+import models
 import json
 import uuid
-from datetime import datetime
-import models
 import os
 
 
@@ -23,6 +24,11 @@ class TestAllMethod(unittest.TestCase):
     """
     This class provides tests for the all method.
     """
+    def test_instance_filestorage(self):
+        """Test create a FileStorage instance"""
+        f1 = FileStorage()
+        self.assertEqual(type(f1), FileStorage)
+
     def test_type_return_value(self):
         """Test the type of the return value"""
         self.assertEqual(type(models.storage.all()), dict)
@@ -145,4 +151,36 @@ class TestSaveMethod(unittest.TestCase):
         s1.save()
         self.assertGreater(os.path.getsize("file.json"), 2)
 
-    def test_
+    def test_save_after_sel(self):
+        """Test if the save method fills the json file"""
+        dico = models.storage.all().copy()
+        for k, v in dico.items():
+            del models.storage.all()[k]
+        models.storage.save()
+        u1 = User()
+        p1 = Place()
+        u1.save()
+        p1.save()
+        self.assertGreater(os.path.getsize("file.json"), 2)
+        dico = models.storage.all().copy()
+        for k, v in dico.items():
+            del models.storage.all()[k]
+        models.storage.save()
+        self.assertEqual(os.path.getsize("file.json"), 2)
+
+
+class TestReloadMethod(unittest.TestCase):
+    """Class that tests the reload method"""
+
+    def test_reload_type(self):
+        """Test the reload method"""
+        dico = models.storage.all().copy()
+        for k, v in dico.items():
+            del models.storage.all()[k]
+        models.storage.save()
+        u1 = User()
+        u1.save()
+        models.storage.reload()
+        dico = models.storage.all()
+        for k, v in dico.items():
+            self.assertEqual(type(dico[k]), type(u1))
