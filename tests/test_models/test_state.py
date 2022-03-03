@@ -18,14 +18,17 @@ class TestState(unittest.TestCase):
     models.storage.save()
 
     def test_state_id(self):
+        """Test the type of id"""
         var = State()
         self.assertIsInstance(var.id, str)
 
     def test_state_created_at(self):
+        """Test the type of created_at"""
         var = State()
         self.assertIsInstance(var.created_at, datetime.datetime)
 
     def test_state_updated_at(self):
+        """Test the type of updated_at"""
         var = State()
         self.assertIsInstance(var.updated_at, datetime.datetime)
 
@@ -35,6 +38,7 @@ class TestState(unittest.TestCase):
         self.assertEqual(type(u1), State)
 
     def test_state_name(self):
+        """Test the type of name"""
         var = State()
         self.assertIsInstance(var.name, str)
 

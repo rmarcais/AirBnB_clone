@@ -18,14 +18,17 @@ class TestAmenity(unittest.TestCase):
     models.storage.save()
 
     def test_amenity_id(self):
+        """Test the tpe of id"""
         var = Amenity()
         self.assertIsInstance(var.id, str)
 
     def test_amenity_created_at(self):
+        """Test the type of created_at"""
         var = Amenity()
         self.assertIsInstance(var.created_at, datetime.datetime)
 
     def test_amenity_updated_at(self):
+        """Test the type of updated_at"""
         var = Amenity()
         self.assertIsInstance(var.updated_at, datetime.datetime)
 
@@ -35,6 +38,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(type(u1), Amenity)
 
     def test_amenity_name(self):
+        """Test the type of name"""
         var = Amenity()
         self.assertIsInstance(var.name, str)
 

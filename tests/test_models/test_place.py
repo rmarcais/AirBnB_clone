@@ -75,7 +75,7 @@ class TestPlace(unittest.TestCase):
     def test_price_by_night(self):
         """Test the price_by_name attribute of the class"""
         var = Place()
-        self.assertIsInstance(var.price_by_name, int)
+        self.assertIsInstance(var.price_by_night, int)
 
     def test_longitude(self):
         """Test the longitude attribute of the class"""
@@ -90,7 +90,7 @@ class TestPlace(unittest.TestCase):
     def test_amenity_ids(self):
         """Test the amenity_ids attribute of the class"""
         var = Place()
-        self.assertIsInstance(var.amenity_ids, int)
+        self.assertIsInstance(var.amenity_ids, list)
 
 
 class TestIsSubclass(unittest.TestCase):
@@ -114,7 +114,7 @@ class TestAttributes(unittest.TestCase):
 
     def test_add_attr(self):
         """Test adding a new attribute"""
-        u1 = City()
+        u1 = Place()
         u1.color = "green"
         dico_place = u1.to_dict()
         u1.save()
