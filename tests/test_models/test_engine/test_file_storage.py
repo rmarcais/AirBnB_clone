@@ -184,3 +184,7 @@ class TestReloadMethod(unittest.TestCase):
         dico = models.storage.all()
         for k, v in dico.items():
             self.assertEqual(type(dico[k]), type(u1))
+
+
+if __name__ == '__main__':
+    unittest.main()
