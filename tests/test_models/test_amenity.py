@@ -10,7 +10,7 @@ import models
 import os
 
 
-class TestUser(unittest.TestCase):
+class TestAmenity(unittest.TestCase):
     """Test the Amenity class"""
     dico = models.storage.all().copy()
     for k, v in dico.items():
