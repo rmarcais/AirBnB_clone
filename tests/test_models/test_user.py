@@ -18,14 +18,17 @@ class TestUser(unittest.TestCase):
     models.storage.save()
 
     def test_user_id(self):
+        """Test the type of id"""
         var = User()
         self.assertIsInstance(var.id, str)
 
     def test_user_created_at(self):
+        """Test the type of created_at"""
         var = User()
         self.assertIsInstance(var.created_at, datetime.datetime)
 
     def test_user_updated_at(self):
+        """Test the type of updated_at"""
         var = User()
         self.assertIsInstance(var.updated_at, datetime.datetime)
 
@@ -35,18 +38,22 @@ class TestUser(unittest.TestCase):
         self.assertEqual(type(u1), User)
 
     def test_user_email(self):
+        """Test the type of email"""
         var = User()
         self.assertIsInstance(var.email, str)
 
     def test_user_passwd(self):
+        """Test the type of password"""
         var = User()
         self.assertIsInstance(var.password, str)
 
     def test_user_first_name(self):
+        """Test the type of first_name"""
         var = User()
         self.assertIsInstance(var.first_name, str)
 
     def test_user_last_name(self):
+        """Test the type of last_name"""
         var = User()
         self.assertIsInstance(var.last_name, str)
 
