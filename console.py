@@ -14,6 +14,7 @@ from models.state import State
 from models.user import User
 import models.engine.file_storage
 import models
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -143,6 +144,56 @@ class HBNBCommand(cmd.Cmd):
 
         setattr(foo, args[2].strip('"'), args[3].strip('"'))
         foo.save()
+
+    def do_count(self, line):
+        """Count the number of instances"""
+        args = line.split()
+        if len(args) >= 1 and args[0] not in HBNBCommand.c:
+            print("** class doesn't exist **")
+        elif len(args) >= 1:
+            dico = models.storage.all()
+            my_list = []
+            for k, v in dico.items():
+                if type(v) is eval(args[0]):
+                    my_list.append(str(dico[k]))
+            print(len(my_list))
+        else:
+            print("** class name missing **")
+
+    def default(self, line):
+        """Method called when the command isn't reconnized"""
+        methods = {
+            "create": self.do_create,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "all": self.do_all,
+            "update": self.do_update,
+            "count": self.do_count
+        }
+        match_point = re.search(r"\.", line)
+        if match_point is not None:
+            """Take the parts before and after the point"""
+            two_parts = [line[:match_point.span()[0]],
+                         line[match_point.span()[1]:]]
+
+            match_par = re.search(r"\((.*?)\)", two_parts[1])
+            """Search () in the part after the point"""
+            if match_par is not None:
+                command = [two_parts[1][:match_par.span()[0]],
+                           match_par.group()[1:-1]]
+                """Keep the command and the id"""
+
+                if command[0] in methods.keys():
+                    if command[0] == "update":
+                        replacing = command[1].replace(",", " ")
+                        """Remove the , between the ()"""
+                        newline = "{} {}".format(two_parts[0], replacing)
+                        return methods[command[0]](newline)
+                    elif command[0] != "update":
+                        newline = "{} {}".format(two_parts[0],
+                                                 command[1])
+                        return methods[command[0]](newline)
+        print("*** Unknown syntax: {}".format(line))
 
 
 if __name__ == '__main__':
