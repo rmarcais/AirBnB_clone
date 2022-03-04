@@ -40,6 +40,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it and prints the id
+        Usage: create <class name> or <class name>.create()
         """
         args = line.split(' ')
         if len(args) == 0:
@@ -54,6 +55,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         """Prints the string representation of an instance based on
         the class name and id
+        Usage: show <class name> <id> or <class name>.show(<id>)
         """
         args = line.split()
         if len(args) == 0:
@@ -71,6 +73,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id
+        Usage: destroy <class name> <id> or <class name>.destroy(<id>)
         """
         args = line.split()
         if len(args) == 0:
@@ -88,8 +91,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """Prints all string representation of all
-        instances based or not on the class name
+        """Prints all string representation of all instances based
+        or not on the class name
+        Usage: all or all <class name> or <class name>.all()
         """
         args = line.split()
         if len(args) >= 1 and args[0] not in HBNBCommand.c:
@@ -107,6 +111,8 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """Updates an instance based on the class name and id by adding
         or updating attribute
+        Usage: update <class name> <id> <attribute name> "<attribute value>" or
+        <class name>.update(<id>, <attribute name>, "<attribute value>")
         """
         args = line.split()
         ivan = line.partition('"')
@@ -146,7 +152,9 @@ class HBNBCommand(cmd.Cmd):
         foo.save()
 
     def do_count(self, line):
-        """Count the number of instances"""
+        """Count the number of instances
+        Usage: count <class name> or <class name>.count()
+        """
         args = line.split()
         if len(args) >= 1 and args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
