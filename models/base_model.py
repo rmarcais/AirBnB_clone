@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 base_model.py
-This module provides a class neamed BaseModel.
+This module provides a class named BaseModel.
 """
 
 
