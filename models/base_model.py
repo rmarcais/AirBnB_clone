@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""base_model.py
+"""
+base_model.py
 This module provides a class neamed BaseModel.
 """
 
@@ -14,7 +15,11 @@ class BaseModel:
     """This class defines all common attributes/methods for other classes."""
 
     def __init__(self, *args, **kwargs):
-        """This method is called when a new instance is created."""
+        """This method is called when a new instance is created.
+        Args:
+        *args: unused
+        *kwargs: pairs of attributes\values
+        """
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -36,14 +41,16 @@ class BaseModel:
                                      self.id, self.__dict__)
 
     def save(self):
-        """Updates the public instance attribute updated_at with the current
+        """
+        Updates the public instance attribute updated_at with the current
         datetime.
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of
+        """
+        Returns a dictionary containing all keys/values of
         __dict__ of the instance.
         """
         my_dict = self.__dict__.copy()
