@@ -43,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
         Usage: create <class name> or <class name>.create()
         """
         args = line.split(' ')
-        if len(args) == 0:
+        if line == "":
             print("** class name missing **")
         elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         Usage: show <class name> <id> or <class name>.show(<id>)
         """
         args = line.split()
-        if len(args) == 0:
+        if line == "":
             print("** class name missing **")
         elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         Usage: destroy <class name> <id> or <class name>.destroy(<id>)
         """
         args = line.split()
-        if len(args) == 0:
+        if line == "":
             print("** class name missing **")
         elif args[0] not in HBNBCommand.c:
             print("** class doesn't exist **")
@@ -117,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         ivan = line.partition('"')
         arguments = line.split('"')[1::2]
-        if len(args) == 0:
+        if line == "":
             print("** class name missing **")
             return
         elif args[0] not in HBNBCommand.c:
