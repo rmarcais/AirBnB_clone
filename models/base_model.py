@@ -5,10 +5,9 @@ This module provides a class neamed BaseModel.
 """
 
 
+import models
 import uuid
 from datetime import datetime
-import time
-import models
 
 
 class BaseModel:
@@ -36,7 +35,7 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """Tells the main program how to print the object."""
+        """Returns the string representation of a BaseModel instance"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
