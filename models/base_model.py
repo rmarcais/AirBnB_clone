@@ -3,8 +3,6 @@
 base_model.py
 This module provides a class named BaseModel.
 """
-
-
 import models
 import uuid
 from datetime import datetime
