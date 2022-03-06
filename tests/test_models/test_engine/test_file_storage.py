@@ -124,6 +124,29 @@ class TestNewMethod(unittest.TestCase):
         dico = models.storage.all()
         self.assertEqual(type(dico["BaseModel." + str(b1.id)]), type(b1))
 
+    def test_createNewInstance(self):
+        """
+        Check the creation of news instances, check if there are well
+        implemented
+        into the storage dict
+        """
+        newBaseModel = BaseModel()
+        newAmenity = Amenity()
+        newPlace = Place()
+        newCity = City()
+        newReview = Review()
+        newState = State()
+        newUser = User()
+        for className in ["BaseModel." + newBaseModel.id,
+                          "Amenity." + newAmenity.id,
+                          "Place." + newPlace.id,
+                          "City." + newCity.id,
+                          "Review." + newReview.id,
+                          "State." + newState.id,
+                          "User." + newUser.id]:
+            self.assertIn(className, models.storage.all().keys())
+
+
 
 class TestSaveMethod(unittest.TestCase):
     """Class that tests the save method"""
