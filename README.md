@@ -268,6 +268,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 Here is the list of the classes, with their attributes, that we used for this project:
 
 - **BaseModel**:
+
 | Attributes | Description |
 |:---:|:---:|
 | init method (constructor method) | Method that defines attributes of an instance when it's created |
@@ -294,7 +295,7 @@ Here is the list of the classes, with their attributes, that we used for this pr
 
 - **State**:
 
-| Attributes | Description |
+| Attribute | Description |
 |:---:|:---:|
 | name | Public class attribute |
 
@@ -306,7 +307,7 @@ Here is the list of the classes, with their attributes, that we used for this pr
 
 - **Amenity**:
 
-| Attributes | Description |
+| Attribute | Description |
 |:---:|:---:|
 | name | Public class attribute |
 
