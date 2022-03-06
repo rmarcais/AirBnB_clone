@@ -125,7 +125,6 @@ class TestNewMethod(unittest.TestCase):
         self.assertEqual(type(dico["BaseModel." + str(b1.id)]), type(b1))
 
 
-
 class TestSaveMethod(unittest.TestCase):
     """Class that tests the save method"""
 
@@ -251,6 +250,7 @@ class TestReloadMethod(unittest.TestCase):
         """Test the reload method without file."""
         with self.assertNotRaises(Exception):
             models.storage.reload()
+
 
 class TestAttributes(unittest.TestCase):
     """Tests with attributes of the class FileStorage"""

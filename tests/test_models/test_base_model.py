@@ -115,9 +115,8 @@ class TestBaseModelSave(unittest.TestCase):
     def test_save_updates_file(self):
         bm = BaseModel()
         bm.save()
-        bmid = "BaseModel." + bm.id
         with open("file.json", "r") as f:
-            self.assertIn(bmid, f.read())
+            self.assertIn("BaseModel." + bm.id, f.read())
 
 
 class TestBaseModelTodict(unittest.TestCase):
