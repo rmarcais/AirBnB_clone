@@ -1,12 +1,12 @@
 <p align = "center">
-<img src = https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20220303%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220303T122422Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8e93fb013130b64f89742abd43888ad97eac0e0bdb922864911bc59ac205063f>
+<img src = https://github.com/elodieriou/AirBnB_clone/blob/main/img/logo_airbnb.png>
 </p>
 
 # Background context
 ## Welcome to the AirBnB clone project!
 ### First step: Write a command interpreter to manage your AirBnB objects.
 
-This is the first step towards building our first full web application: the AirBnB clone. This first step is very important because we will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+This is the first step towards building our first full web application: the AirBnB clone. This first step is very important because we will use what we build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
 Each task is linked and will help us to:
 
@@ -17,11 +17,11 @@ Each task is linked and will help us to:
 - create all unittests to validate all our classes and storage engine
 
 <p align = "center">
-<img src = https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20220306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220306T170951Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=b6f955ca6e7ed5e76cb68221e3c94e0e6726e5dfbe8036694bbfb2e7d7a2439e>
+<img src = https://github.com/elodieriou/AirBnB_clone/raw/main/img/intro1.png>
 </p>
 
 ## What’s a command interpreter?
-Do you remember the Shell? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
+Do you remember the [Shell](https://linuxcommand.org/lc3_lts0010.php)? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
 
 - Create a new object (ex: a new User or a new Place)
 - Retrieve an object from a file, a database etc…
@@ -127,7 +127,16 @@ EOF  help  quit
 $
 ```
 
-All tests should also pass in non-interactive mode: ```$ echo "python3 -m unittest discover tests" | bash```
+All tests should also pass in non-interactive mode: ```$ echo "python3 -m unittest discover tests" | bash```:
+```
+$ echo "python3 -m unittest discover tests" | bash
+....................................................................................................
+----------------------------------------------------------------------
+Ran 100 tests in 0.014s
+
+OK
+$
+```
 
 
 ## Run commands
@@ -151,7 +160,7 @@ EOF  all  count  create  destroy  help  quit  show  update
 Creates a new instance of BaseModel, saves it and prints the id
         Usage: create <class name> or <class name>.create()
         
-
+(hbnb)
 ```
 
 - ```quit``` & ```EOF```: exits the console
@@ -182,6 +191,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 ** class name missing **
 (hbnb) create Country
 ** class doesn't exist **
+(hbnb)
 ```
 
 - ```show``` + id or class name.show(id): Prints the string representation of an instance based on the class name and id.
@@ -195,6 +205,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 ** no instance found **
 (hbnb) show BaseModel f8224de5-af1a-431c-847f-2f4f018abe45
 [BaseModel] (f8224de5-af1a-431c-847f-2f4f018abe45) {'id': 'f8224de5-af1a-431c-847f-2f4f018abe45', 'created_at': datetime.datetime(2022, 3, 6, 18, 53, 31, 735220), 'updated_at': datetime.datetime(2022, 3, 6, 18, 53, 31, 735268)}
+(hbnb)
 ```
 
 - ```destroy``` + id or class name.destroy(id): Deletes an instance based on the class name and id.
@@ -207,6 +218,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 (hbnb) destroy BaseModel f8224de5-af1a-431c-847f-2f4f018abe45
 (hbnb) show BaseModel f8224de5-af1a-431c-847f-2f4f018abe45
 ** no instance found **
+(hbnb)
 ```
 
 - ```all``` or class name.all(): Prints all string representation of all instances based or not on the class name.
@@ -218,6 +230,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 ["[User] (c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd) {'id': 'c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd', 'created_at': datetime.datetime(2022, 3, 6, 18, 53, 34, 929740), 'updated_at': datetime.datetime(2022, 3, 6, 18, 53, 34, 929784)}"]
 (hbnb) all Country
 ** class doesn't exist **
+(hbnb)
 ```
 
 - ```update``` + class name + id + attribute name + attribute value or class name.```update```(id, attribute name, attribute value): Updates an instance based on the class name and id by adding or updating attribute
@@ -234,6 +247,7 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 (hbnb) update User c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd name "John"
 (hbnb) show User c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd
 [User] (c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd) {'id': 'c9500bd3-bedc-4bb1-8ab8-2c5d6744b7dd', 'created_at': datetime.datetime(2022, 3, 6, 18, 53, 34, 929740), 'updated_at': datetime.datetime(2022, 3, 6, 19, 0, 52, 347755), 'name': 'John'}
+(hbnb)
 ```
 
 - ```count``` + class name or class name.count(): retrieves the number of instances of a class:
@@ -247,16 +261,81 @@ a60cbb5b-16ae-42c2-a6af-48bf5244f6b2
 21cea46d-5b61-430c-ab3c-6ed34536d8f5
 (hbnb) User.count()
 2
+(hbnb)
 ```
 
+## The classes
+Here is the list of the classes, with their attributes, that we used for this project:
+
+- **BaseModel**:
+| Attributes | Description |
+|:---:|:---:|
+| init method (constructor method) | Method that defines attributes of an instance when it's created |
+| str method | returns the string represention of an instance |
+| save method | updates the public instance attribute ```updated_at``` with the current datetime and saves the object in the json file |
+| to_dict method | returns a dictionary containing all keys/values of dict of an instance |
+
+- **FileStorage**:
+
+| Attributes | Description |
+|:---:|:---:|
+| private class attribute __file_path | string - path to the JSON file |
+| __objects | dictionary - empty but will store all objects by class name.id |
+| all method | returns the dictionary __objects |
+| new method | sets in __objects the obj with key obj class name.id |
+| save method | serializes __objects to the JSON file (path: __file_path) |
+| reaload method | deserializes the JSON file to __objects (only if the JSON file (__file_path) exists) |
+
+- **User**:
+
+| Attributes | Description |
+|:---:|:---:|
+| email, password, first_name, last_name | Public class attributes |
+
+- **State**:
+
+| Attributes | Description |
+|:---:|:---:|
+| name | Public class attribute |
+
+- **City**:
+
+| Attributes | Description |
+|:---:|:---:|
+| state_id, name | Public class attributes |
+
+- **Amenity**:
+
+| Attributes | Description |
+|:---:|:---:|
+| name | Public class attribute |
+
+- **Place**:
+
+| Attributes | Description |
+|:---:|:---:|
+| city_id, user_id, name, description
+number_rooms, number_bathrooms, max_guest
+price_by_night, latitude, longitude, amenity_ids | Public class attributes |
+
+- **Review**:
+
+| Attributes | Description |
+|:---:|:---:|
+| place_id, user_id, text | Public class attributes |
+
+
+
+
+
 ## Cloning the repo
-To clone this repository, run the command:
+To clone this repository, you can run this command:
 ```
 git clone git@github.com:rmarcais/AirBnB_clone.git
 ```
 
 ## Authors
 
-| Élodie Riou | Rémi Marçais |
+| Ivan Mickisz | Rémi Marçais |
 |:---:|:---:|
-|<a href="https://www.linkedin.com/in/ivan-mickisz-550222222/"> <img alt="Ivan Mickisz Linkedin" width="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"> <a href="https://github.com/IMickisz"> <img alt="Élodie Riou Github" width="40px" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"> | <a href="https://www.linkedin.com/in/r%C3%A9mi-mar%C3%A7ais-274a4421a/"> <img alt="Rémi Marçais Linkedin" width="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"> <a href="https://github.com/rmarcais"> <img alt="Elodie RIOU Github" width="40px" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"> |
+|<a href="https://www.linkedin.com/in/ivan-mickisz-550222222/"> <img alt="Ivan Mickisz Linkedin" width="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"> <a href="https://github.com/IMickisz"> <img alt=" Ivan Mickisz Github" width="40px" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"> | <a href="https://www.linkedin.com/in/r%C3%A9mi-mar%C3%A7ais-274a4421a/"> <img alt="Rémi Marçais Linkedin" width="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"> <a href="https://github.com/rmarcais"> <img alt="Elodie RIOU Github" width="40px" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"> |
