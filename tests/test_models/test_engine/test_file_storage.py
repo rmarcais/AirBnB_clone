@@ -124,28 +124,6 @@ class TestNewMethod(unittest.TestCase):
         dico = models.storage.all()
         self.assertEqual(type(dico["BaseModel." + str(b1.id)]), type(b1))
 
-    def test_createNewInstance(self):
-        """
-        Check the creation of news instances, check if there are well
-        implemented
-        into the storage dict
-        """
-        newBaseModel = BaseModel()
-        newAmenity = Amenity()
-        newPlace = Place()
-        newCity = City()
-        newReview = Review()
-        newState = State()
-        newUser = User()
-        for className in ["BaseModel." + newBaseModel.id,
-                          "Amenity." + newAmenity.id,
-                          "Place." + newPlace.id,
-                          "City." + newCity.id,
-                          "Review." + newReview.id,
-                          "State." + newState.id,
-                          "User." + newUser.id]:
-            self.assertIn(className, models.storage.all().keys())
-
 
 
 class TestSaveMethod(unittest.TestCase):
@@ -269,6 +247,10 @@ class TestReloadMethod(unittest.TestCase):
         self.assertIn("Amenity." + a1.id, obj)
         self.assertIn("Review." + r1.id, obj)
 
+    def reload_no_json_file(self):
+        """Test the reload method without file."""
+        with self.assertNotRaises(Exception):
+            models.storage.reload()
 
 class TestAttributes(unittest.TestCase):
     """Tests with attributes of the class FileStorage"""
