@@ -151,7 +151,7 @@ class TestSaveMethod(unittest.TestCase):
         s1.save()
         self.assertGreater(os.path.getsize("file.json"), 2)
 
-    def test_save_after_sel(self):
+    def test_save_after_del(self):
         """Test if the save method fills the json file"""
         dico = models.storage.all().copy()
         for k, v in dico.items():
@@ -167,6 +167,37 @@ class TestSaveMethod(unittest.TestCase):
             del models.storage.all()[k]
         models.storage.save()
         self.assertEqual(os.path.getsize("file.json"), 2)
+
+    def test_save_in(self):
+        """Test if the keys are in the json file."""
+        dico = models.storage.all().copy()
+        for k, v in dico.items():
+            del models.storage.all()[k]
+        models.storage.save()
+        b1 = BaseModel()
+        u1 = User()
+        s1 = State()
+        p1 = Place()
+        c1 = City()
+        a1 = Amenity()
+        r1 = Review()
+        b1.save()
+        u1.save()
+        s1.save()
+        p1.save()
+        c1.save()
+        a1.save()
+        r1.save()
+        text = ""
+        with open("file.json", "r") as f:
+            text = f.read()
+            self.assertIn("BaseModel." + b1.id, text)
+            self.assertIn("User." + u1.id, text)
+            self.assertIn("State." + s1.id, text)
+            self.assertIn("Place." + p1.id, text)
+            self.assertIn("City." + c1.id, text)
+            self.assertIn("Amenity." + a1.id, text)
+            self.assertIn("Review." + r1.id, text)
 
 
 class TestReloadMethod(unittest.TestCase):
@@ -184,6 +215,36 @@ class TestReloadMethod(unittest.TestCase):
         dico = models.storage.all()
         for k, v in dico.items():
             self.assertEqual(type(dico[k]), type(u1))
+
+    def test_reload_in(self):
+        """Test if the keys are in storage.all()."""
+        dico = models.storage.all().copy()
+        for k, v in dico.items():
+            del models.storage.all()[k]
+        models.storage.save()
+        b1 = BaseModel()
+        u1 = User()
+        s1 = State()
+        p1 = Place()
+        c1 = City()
+        a1 = Amenity()
+        r1 = Review()
+        b1.save()
+        u1.save()
+        s1.save()
+        p1.save()
+        c1.save()
+        a1.save()
+        r1.save()
+        models.storage.reload()
+        obj = models.storage.all()
+        self.assertIn("BaseModel." + b1.id, obj)
+        self.assertIn("User." + u1.id, obj)
+        self.assertIn("State." + s1.id, obj)
+        self.assertIn("Place." + p1.id, obj)
+        self.assertIn("City." + c1.id, obj)
+        self.assertIn("Amenity." + a1.id, obj)
+        self.assertIn("Review." + r1.id, obj)
 
 
 class TestAttributes(unittest.TestCase):
