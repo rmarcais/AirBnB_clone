@@ -186,5 +186,15 @@ class TestReloadMethod(unittest.TestCase):
             self.assertEqual(type(dico[k]), type(u1))
 
 
+class TestAttributes(unittest.TestCase):
+    """Tests with attributes of the class FileStorage"""
+    def test_attributes_assignement(self):
+        """Test attributes assignement"""
+        self.assertIn("_FileStorage__objects", FileStorage.__dict__)
+        self.assertIsInstance(FileStorage._FileStorage__objects, dict)
+        self.assertIn("_FileStorage__file_path", FileStorage.__dict__)
+        self.assertIsInstance(FileStorage._FileStorage__file_path, str)
+
+
 if __name__ == '__main__':
     unittest.main()
