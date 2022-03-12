@@ -61,6 +61,7 @@ li {
 }
 
 .popover {
+    position: relative;
     display: none;
     background-color: #FAFAFA;
     border-radius: 4px;
