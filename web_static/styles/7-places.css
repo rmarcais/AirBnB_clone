@@ -14,7 +14,7 @@ h1 {
 }
 
 article {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 390px;
