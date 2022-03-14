@@ -1,0 +1,12 @@
+/*Footer style*/
+footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    border-top: 1px solid #CCCCCC;
+    align-items: center;
+}
