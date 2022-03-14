@@ -4,12 +4,14 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 h1 {
     margin-left: 20px;
     font-size: 30px;
     width: 100%;
+
 }
 
 article {
